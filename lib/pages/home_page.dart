@@ -45,7 +45,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-//-----------------------------------------
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal
+
 
 class _CategoriesBar extends StatelessWidget {
   const _CategoriesBar({
