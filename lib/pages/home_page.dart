@@ -13,8 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
-
   final lightColor = LightColor();
   final _buttonName = '';
 
@@ -38,15 +36,14 @@ class _HomePageState extends State<HomePage> {
           _SearchBar(),
           HeadTitle(),
           _CategoriesBar(),
-         ProductCards(),
+          ProductCards(),
         ],
       ),
     );
   }
 }
 
-//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal
-
+//--------------------
 
 class _CategoriesBar extends StatelessWidget {
   const _CategoriesBar({
