@@ -7,7 +7,7 @@ class LightTheme {
 
   LightTheme() {
     theme = ThemeData(
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         color: Colors.transparent,
         elevation: 0,
       ),
@@ -20,7 +20,7 @@ class LightTheme {
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder:OutlineInputBorder(
               borderRadius: BorderRadius.circular(28),
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Color.fromARGB(255, 236, 236, 236),
           ),
         ),
@@ -36,7 +36,7 @@ class LightTheme {
 }
 
 class LightColor {
-  final Color _appBackgroundColor = Color(0xffddf1fa);
-  final Color finshBoy = Color(0xff0dd7de);
-  final Color mediEvalBlue = Color(0xff2e3a5a);
+  final Color _appBackgroundColor = const Color(0xffddf1fa);
+  final Color finshBoy = const Color(0xff0dd7de);
+  final Color mediEvalBlue = const Color(0xff2e3a5a);
 }

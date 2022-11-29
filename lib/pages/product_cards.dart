@@ -51,7 +51,7 @@ class _ProductCardsState extends State<ProductCards> {
               var shoesList = snapshot.data;
               return GridView.builder(
                 itemCount: shoesList!.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 9 / 10,
                 ),
@@ -69,10 +69,11 @@ class _ProductCardsState extends State<ProductCards> {
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left:18.0),
+                                padding: const EdgeInsets.only(left: 18.0),
                                 child: Text(
                                   '\$',
-                                  style: TextStyle(color: lightColor.finshBoy, fontWeight: FontWeight.bold, fontSize: 20),
+                                  style:
+                                      TextStyle(color: lightColor.finshBoy, fontWeight: FontWeight.bold, fontSize: 20),
                                 ),
                               ),
                               Text(
@@ -80,18 +81,7 @@ class _ProductCardsState extends State<ProductCards> {
                                 style: TextStyle(
                                     color: lightColor.mediEvalBlue, fontWeight: FontWeight.bold, fontSize: 20),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left:60.0),
-                                child: IconButton(
-                                  onPressed: _changeLoading,
-                                  icon: AnimatedCrossFade(
-                                    firstChild: Icon(Icons.heart_broken_sharp,color: Colors.grey[400],size: 26,),
-                                    secondChild: Icon(Icons.heart_broken_sharp,color: Colors.red,size: 26),
-                                    crossFadeState: _isSecure ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                                    duration: Duration(seconds: 1),
-                                  ),
-                                ),
-                              ),
+                              _LikeIcon(),
                             ],
                           ),
                           Padding(
@@ -106,7 +96,7 @@ class _ProductCardsState extends State<ProductCards> {
                             padding: const EdgeInsets.symmetric(vertical: 12),
                             child: Text(
                               '${shoes.name}',
-                              style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -116,9 +106,28 @@ class _ProductCardsState extends State<ProductCards> {
                 },
               );
             } else {
-              return Center();
+              return const Center();
             }
           },
+        ),
+      ),
+    );
+  }
+
+  Padding _LikeIcon() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 60.0),
+      child: IconButton(
+        onPressed: _changeLoading,
+        icon: AnimatedCrossFade(
+          firstChild: Icon(
+            Icons.heart_broken_sharp,
+            color: Colors.grey[400],
+            size: 26,
+          ),
+          secondChild: const Icon(Icons.heart_broken_sharp, color: Colors.red, size: 26),
+          crossFadeState: _isSecure ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          duration: const Duration(seconds: 1),
         ),
       ),
     );

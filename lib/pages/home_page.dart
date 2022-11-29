@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
+        leading: const Icon(
           Icons.dehaze_rounded,
           color: Colors.black,
         ),
@@ -35,8 +35,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           _SearchBar(),
           HeadTitle(),
-          _CategoriesBar(),
-          ProductCards(),
+          const _CategoriesBar(),
+          const ProductCards(),
         ],
       ),
     );
@@ -150,7 +150,7 @@ class _SearchBar extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: lightColor.finshBoy,
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.search,
                   color: Colors.white,
                   size: 31,
