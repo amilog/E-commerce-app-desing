@@ -18,17 +18,23 @@ class LightTheme {
       textTheme:
           ThemeData.light().textTheme.copyWith(subtitle1: TextStyle(fontSize: 25, color: lightColor.mediEvalBlue)),
       inputDecorationTheme: InputDecorationTheme(
-        enabledBorder:OutlineInputBorder(
-              borderRadius: BorderRadius.circular(28),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(28),
           borderSide: const BorderSide(
             color: Color.fromARGB(255, 236, 236, 236),
           ),
         ),
         focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(28),
+          borderRadius: BorderRadius.circular(28),
           borderSide: BorderSide(
             color: lightColor.finshBoy,
           ),
+        ),
+      ),
+      cardColor: Colors.white,
+      cardTheme: CardTheme(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );

@@ -11,7 +11,7 @@ class ProductCards extends StatefulWidget {
 }
 
 class _ProductCardsState extends State<ProductCards> {
-  Future<List<Shoes>> Generating() async {
+  Future<List<Shoes>> generating() async {
     var shoesList = <Shoes>[];
 
     var s1 = Shoes(1, 'Jordan 4 Retro', 340, 'black_retro_jordan.png',
@@ -45,7 +45,7 @@ class _ProductCardsState extends State<ProductCards> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: FutureBuilder<List<Shoes>>(
-          future: Generating(),
+          future: generating(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var shoesList = snapshot.data;
@@ -60,45 +60,11 @@ class _ProductCardsState extends State<ProductCards> {
                   return GestureDetector(
                     onTap: () {},
                     child: Card(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
                       child: Column(
                         children: [
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 18.0),
-                                child: Text(
-                                  '\$',
-                                  style:
-                                      TextStyle(color: lightColor.finshBoy, fontWeight: FontWeight.bold, fontSize: 20),
-                                ),
-                              ),
-                              Text(
-                                '${shoes.price}',
-                                style: TextStyle(
-                                    color: lightColor.mediEvalBlue, fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                              _LikeIcon(),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 12.0),
-                            child: SizedBox(
-                                width: 115,
-                                child: Image.asset(
-                                  'assets/${shoes.photo_name}',
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Text(
-                              '${shoes.name}',
-                              style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
-                            ),
-                          ),
+                          _priceAndLikeIcon(shoes),
+                          _productImage(shoes),
+                          _productName(shoes),
                         ],
                       ),
                     ),
@@ -114,22 +80,58 @@ class _ProductCardsState extends State<ProductCards> {
     );
   }
 
-  Padding _LikeIcon() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 60.0),
-      child: IconButton(
-        onPressed: _changeLoading,
-        icon: AnimatedCrossFade(
-          firstChild: Icon(
-            Icons.heart_broken_sharp,
-            color: Colors.grey[400],
-            size: 26,
+  Row _priceAndLikeIcon(Shoes shoes) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 18.0),
+          child: Text(
+            '\$',
+            style: TextStyle(color: lightColor.finshBoy, fontWeight: FontWeight.bold, fontSize: 20),
           ),
-          secondChild: const Icon(Icons.heart_broken_sharp, color: Colors.red, size: 26),
-          crossFadeState: _isSecure ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          duration: const Duration(seconds: 1),
         ),
+        Text(
+          '${shoes.price}',
+          style: TextStyle(color: lightColor.mediEvalBlue, fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 60.0),
+          child: IconButton(
+            onPressed: _changeLoading,
+            icon: AnimatedCrossFade(
+              firstChild: Icon(
+                Icons.heart_broken_sharp,
+                color: Colors.grey[400],
+                size: 26,
+              ),
+              secondChild: const Icon(Icons.heart_broken_sharp, color: Colors.red, size: 26),
+              crossFadeState: _isSecure ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              duration: const Duration(seconds: 1),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding _productName(Shoes shoes) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12),
+      child: Text(
+        shoes.name,
+        style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
       ),
+    );
+  }
+
+  Padding _productImage(Shoes shoes) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0),
+      child: SizedBox(
+          width: 115,
+          child: Image.asset(
+            'assets/${shoes.photoName}',
+          )),
     );
   }
 }

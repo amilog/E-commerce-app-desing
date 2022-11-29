@@ -1,9 +1,6 @@
-import 'package:ecommerce_app_demo_one/class/shoes_class.dart';
 import 'package:ecommerce_app_demo_one/pages/product_cards.dart';
 import 'package:ecommerce_app_demo_one/theme/light_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce_app_demo_one/theme/light_theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,21 +11,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final lightColor = LightColor();
-  final _buttonName = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(
-          Icons.dehaze_rounded,
-          color: Colors.black,
-        ),
+        leading: appBarLeadingIcon(),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: ClipOval(child: Image.asset('assets/profil_picture_cyan_aa.png')),
-          ),
+          hmAppBarActions(),
         ],
       ),
       body: Column(
@@ -39,6 +29,20 @@ class _HomePageState extends State<HomePage> {
           const ProductCards(),
         ],
       ),
+    );
+  }
+
+  Padding hmAppBarActions() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20.0),
+      child: ClipOval(child: Image.asset('assets/profil_picture_cyan_aa.png')),
+    );
+  }
+
+  Icon appBarLeadingIcon() {
+    return const Icon(
+      Icons.dehaze_rounded,
+      color: Colors.black,
     );
   }
 }
@@ -96,7 +100,7 @@ class CategoriesButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         child: Text(
-          '$_buttonName',
+          _buttonName,
           style: TextStyle(color: lightColor.mediEvalBlue, fontSize: 17, fontWeight: FontWeight.w500),
         ),
         onPressed: () {});
