@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     Container(),
     Container(),
     const Settings(),
+    Container(),
   ];
 
   void _navigateBottomBar(int index) {
