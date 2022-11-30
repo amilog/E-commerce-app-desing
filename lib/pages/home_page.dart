@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     ),
     Container(),
     Container(),
-    Settings(),
+    const Settings(),
   ];
 
   void _navigateBottomBar(int index) {
@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
         color: Colors.white,
         child: GNav(
           selectedIndex: selectedPage,
+          activeColor: lightColor.finshBoy,
           onTabChange: (index) {
             _navigateBottomBar(index);
           },
@@ -48,19 +49,18 @@ class _HomePageState extends State<HomePage> {
           tabs: [
             GButton(
               icon: Icons.home,
-              text: "Home",
+            ),
+            GButton(
+              icon: Icons.messenger_outline,
             ),
             GButton(
               icon: Icons.favorite_border,
-              text: "Favorites",
             ),
             GButton(
-              icon: Icons.search,
-              text: "Search",
+              icon: Icons.shopping_bag_outlined,
             ),
             GButton(
-              icon: Icons.settings,
-              text: "Settings",
+              icon: Icons.person_outline_rounded,
             ),
           ],
         ),
@@ -74,6 +74,8 @@ class _HomePageState extends State<HomePage> {
       body: _pages[selectedPage],
     );
   }
+
+  //-------------------------------------
 
   Padding hmAppBarActions() {
     return Padding(
@@ -89,8 +91,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-//--------------------
 
 class _CategoriesBar extends StatelessWidget {
   const _CategoriesBar({
@@ -144,10 +144,7 @@ class CategoriesButton extends StatelessWidget {
     return TextButton(
         child: Text(
           _buttonName,
-          style: TextStyle(
-              color: lightColor.mediEvalBlue,
-              fontSize: 17,
-              fontWeight: FontWeight.w500),
+          style: TextStyle(color: lightColor.mediEvalBlue, fontSize: 17, fontWeight: FontWeight.w500),
         ),
         onPressed: () {});
   }
@@ -168,10 +165,7 @@ class HeadTitle extends StatelessWidget {
         children: [
           Text(
             'Categories',
-            style: TextStyle(
-                color: lightColor.mediEvalBlue,
-                fontSize: 43,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(color: lightColor.mediEvalBlue, fontSize: 43, fontWeight: FontWeight.bold),
           ),
         ],
       ),
@@ -211,10 +205,7 @@ class _SearchBar extends StatelessWidget {
             filled: true,
             fillColor: Colors.white,
             hintText: 'Find shose',
-            hintStyle: TextStyle(
-                color: Colors.grey[400],
-                fontSize: 20,
-                fontWeight: FontWeight.w600),
+            hintStyle: TextStyle(color: Colors.grey[400], fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
       ),

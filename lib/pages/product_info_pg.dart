@@ -1,4 +1,3 @@
-import 'package:ecommerce_app_demo_one/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/light_theme.dart';
