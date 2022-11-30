@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_demo_one/pages/product_info_pg.dart';
 import 'package:flutter/material.dart';
 
 import '../class/shoes_class.dart';
@@ -53,12 +54,14 @@ class _ProductCardsState extends State<ProductCards> {
                 itemCount: shoesList!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 9 / 10,
+                  childAspectRatio: 28 / 30,
                 ),
                 itemBuilder: (context, indeks) {
                   var shoes = shoesList[indeks];
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: ((context) => ProductPage())));
+                    },
                     child: Card(
                       child: Column(
                         children: [
@@ -116,7 +119,7 @@ class _ProductCardsState extends State<ProductCards> {
 
   Padding _productName(Shoes shoes) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 7),
       child: Text(
         shoes.name,
         style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),

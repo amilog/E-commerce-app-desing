@@ -140,7 +140,7 @@ class _SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 35),
+      padding: const EdgeInsets.only(left: 25.0, right: 25.0, top: 30),
       child: SizedBox(
         height: 56,
         child: TextField(
