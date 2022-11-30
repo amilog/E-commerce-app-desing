@@ -71,7 +71,7 @@ class _ProductCardsState extends State<ProductCards> {
                 itemCount: shoesList!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 28 / 30,
+                  childAspectRatio: 29 / 30,
                 ),
                 itemBuilder: (context, indeks) {
                   var shoes = shoesList[indeks];
@@ -150,7 +150,7 @@ class _ProductCardsState extends State<ProductCards> {
 
   Padding _productName(Shoes shoes) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 7),
+      padding: const EdgeInsets.symmetric(vertical: 3),
       child: Text(
         shoes.name,
         style: const TextStyle(
