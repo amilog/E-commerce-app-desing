@@ -33,7 +33,7 @@ class _ProductCardsState extends State<ProductCards> {
   }
 
   final lightColor = LightColor();
-  bool _isSecure = true;
+  bool _isSecure = false;
   void _changeLoading() {
     setState(() {
       _isSecure = !_isSecure;
