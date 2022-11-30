@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     Container(),
     Container(),
     const Settings(),
+    Container(),
   ];
 
   void _navigateBottomBar(int index) {
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
         child: GNav(
           selectedIndex: selectedPage,
           activeColor: lightColor.finshBoy,
+
           onTabChange: (index) {
             _navigateBottomBar(index);
           },
@@ -84,10 +86,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Icon appBarLeadingIcon() {
-    return const Icon(
-      Icons.dehaze_rounded,
-      color: Colors.black,
+  Widget appBarLeadingIcon() { // Burda Icon yerine Widget isletmey daha yaxsidi.
+    return SizedBox(
+      child: const Icon(
+        Icons.dehaze_rounded,
+        color: Colors.black,
+      ),
     );
   }
 }

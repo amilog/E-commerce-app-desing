@@ -41,10 +41,6 @@ class _ProductCardsState extends State<ProductCards> {
         'air_jordan_6.png',
         'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
         false),
-       
-
-
-
   ];
 
   Future<List<Shoes>> listPull() async {
@@ -81,7 +77,7 @@ class _ProductCardsState extends State<ProductCards> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => const ProductPage())));
+                              builder: ((context) => ProductPage())));
                     },
                     child: Card(
                       child: Column(
