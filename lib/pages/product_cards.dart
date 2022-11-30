@@ -12,33 +12,50 @@ class ProductCards extends StatefulWidget {
 }
 
 class _ProductCardsState extends State<ProductCards> {
-  Future<List<Shoes>> generating() async {
-    var shoesList = <Shoes>[];
+  var shoesList = <Shoes>[
+    Shoes(
+        1,
+        'Jordan 4 Retro',
+        340,
+        'black_retro_jordan.png',
+        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
+        false),
+    Shoes(
+        2,
+        ' Air Jordan 1',
+        220,
+        'blue_jordan.png',
+        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
+        false),
+    Shoes(
+        3,
+        'Air Jordan 5',
+        290,
+        'jordan_shoes.png',
+        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
+        false),
+    Shoes(
+        4,
+        'Air Jordan 6',
+        160,
+        'air_jordan_6.png',
+        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
+        false),
 
-    var s1 = Shoes(1, 'Jordan 4 Retro', 340, 'black_retro_jordan.png',
-        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.');
-    var s2 = Shoes(2, ' Air Jordan 1', 220, 'blue_jordan.png',
-        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.');
-    var s3 = Shoes(3, 'Air Jordan 5', 290, 'jordan_shoes.png',
-        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.');
-    var s4 = Shoes(4, 'Air Jordan 6', 160, 'air_jordan_6.png',
-        'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.');
 
-    shoesList.add(s1);
-    shoesList.add(s2);
-    shoesList.add(s3);
-    shoesList.add(s4);
 
+  ];
+
+  Future<List<Shoes>> listPull() async {
     return shoesList;
   }
 
-  final lightColor = LightColor();
-  bool _isSecure = true;
-  void _changeLoading() {
-    setState(() {
-      _isSecure = !_isSecure;
-    });
+  void likeButtonFunc(int id) {
+    final tile = shoesList.firstWhere((item) => item.id == id);
+    setState(() => tile.liked = tile.liked ? false : true);
   }
+
+  final lightColor = LightColor();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +63,7 @@ class _ProductCardsState extends State<ProductCards> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: FutureBuilder<List<Shoes>>(
-          future: generating(),
+          future: listPull(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               var shoesList = snapshot.data;
@@ -60,7 +77,10 @@ class _ProductCardsState extends State<ProductCards> {
                   var shoes = shoesList[indeks];
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: ((context) => ProductPage())));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => ProductPage())));
                     },
                     child: Card(
                       child: Column(
@@ -90,25 +110,36 @@ class _ProductCardsState extends State<ProductCards> {
           padding: const EdgeInsets.only(left: 18.0),
           child: Text(
             '\$',
-            style: TextStyle(color: lightColor.finshBoy, fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(
+                color: lightColor.finshBoy,
+                fontWeight: FontWeight.bold,
+                fontSize: 20),
           ),
         ),
         Text(
           '${shoes.price}',
-          style: TextStyle(color: lightColor.mediEvalBlue, fontWeight: FontWeight.bold, fontSize: 20),
+          style: TextStyle(
+              color: lightColor.mediEvalBlue,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 60.0),
           child: IconButton(
-            onPressed: _changeLoading,
+            onPressed: () {
+              likeButtonFunc(shoes.id);
+            },
             icon: AnimatedCrossFade(
               firstChild: Icon(
                 Icons.heart_broken_sharp,
                 color: Colors.grey[400],
                 size: 26,
               ),
-              secondChild: const Icon(Icons.heart_broken_sharp, color: Colors.red, size: 26),
-              crossFadeState: _isSecure ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+              secondChild: const Icon(Icons.heart_broken_sharp,
+                  color: Colors.red, size: 26),
+              crossFadeState: shoes.liked
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
               duration: const Duration(seconds: 1),
             ),
           ),
@@ -122,7 +153,8 @@ class _ProductCardsState extends State<ProductCards> {
       padding: const EdgeInsets.symmetric(vertical: 7),
       child: Text(
         shoes.name,
-        style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+        style: const TextStyle(
+            fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
   }
