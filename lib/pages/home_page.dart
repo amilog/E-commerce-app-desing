@@ -43,11 +43,9 @@ class _HomePageState extends State<HomePage> {
         child: GNav(
           selectedIndex: selectedPage,
           activeColor: lightColor.finshBoy,
-
           onTabChange: (index) {
             _navigateBottomBar(index);
           },
-          gap: 8,
           tabs: [
             GButton(
               icon: Icons.home,
@@ -216,3 +214,9 @@ class _SearchBar extends StatelessWidget {
     );
   }
 }
+
+
+/*
+       .__(.)< (MEOW)
+        \___)
+ */

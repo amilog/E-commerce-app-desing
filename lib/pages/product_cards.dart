@@ -102,37 +102,40 @@ class _ProductCardsState extends State<ProductCards> {
 
   Row _priceAndLikeIcon(Shoes shoes) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 18.0),
-          child: Text(
-            '\$',
-            style: TextStyle(
-                color: lightColor.finshBoy,
-                fontWeight: FontWeight.bold,
-                fontSize: 20),
-          ),
+        Row(
+          children: [
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              '\$',
+              style: TextStyle(
+                  color: lightColor.finshBoy,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+            Text(
+              '${shoes.price}',
+              style: TextStyle(
+                  color: lightColor.mediEvalBlue,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+          ],
         ),
-        Text(
-          '${shoes.price}',
-          style: TextStyle(
-              color: lightColor.mediEvalBlue,
-              fontWeight: FontWeight.bold,
-              fontSize: 20),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 60.0),
-          child: IconButton(
+        IconButton(
             onPressed: () {
               likeButtonFunc(shoes.id);
             },
             icon: AnimatedCrossFade(
               firstChild: Icon(
-                Icons.heart_broken_sharp,
+                Icons.heart_broken,
                 color: Colors.grey[400],
                 size: 26,
               ),
-              secondChild: const Icon(Icons.heart_broken_sharp,
+              secondChild: const Icon(Icons.check_box,
                   color: Colors.red, size: 26),
               crossFadeState: shoes.liked
                   ? CrossFadeState.showSecond
@@ -140,7 +143,6 @@ class _ProductCardsState extends State<ProductCards> {
               duration: const Duration(seconds: 1),
             ),
           ),
-        ),
       ],
     );
   }
@@ -160,7 +162,7 @@ class _ProductCardsState extends State<ProductCards> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: SizedBox(
-          width: 115,
+          width: 100,
           child: Image.asset(
             'assets/${shoes.photoName}',
           )),
