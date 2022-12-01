@@ -215,8 +215,3 @@ class _SearchBar extends StatelessWidget {
   }
 }
 
-
-/*
-       .__(.)< (MEOW)
-        \___)
- */
