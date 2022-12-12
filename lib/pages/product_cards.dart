@@ -24,7 +24,7 @@ class _ProductCardsState extends State<ProductCards> {
         2,
         ' Air Jordan 1',
         220,
-        'blue_jordan.png',
+        'jordan_shoes.png',
         'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
         false),
     Shoes(
@@ -36,9 +36,9 @@ class _ProductCardsState extends State<ProductCards> {
         false),
     Shoes(
         4,
-        'Air Jordan 6',
-        160,
-        'air_jordan_6.png',
+        'Air Jordan',
+        120,
+        'black_retro_jordan.png',
         'Air Jordan is an American brand of basketball shoes produced by American corporation Nike. The first Air Jordan shoe was produced for Hall of Fame former basketball player Michael Jordan during his time with the Chicago Bulls in late 1984 and released to the public on April 1, 1985.',
         false),
   ];
@@ -135,7 +135,7 @@ class _ProductCardsState extends State<ProductCards> {
                 color: Colors.grey[400],
                 size: 26,
               ),
-              secondChild: const Icon(Icons.check_box,
+              secondChild: const Icon(Icons.heart_broken_rounded,
                   color: Colors.red, size: 26),
               crossFadeState: shoes.liked
                   ? CrossFadeState.showSecond
@@ -160,7 +160,7 @@ class _ProductCardsState extends State<ProductCards> {
 
   Padding _productImage(Shoes shoes) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12.0),
+      padding: const EdgeInsets.symmetric(horizontal:22.0,vertical: 5),
       child: SizedBox(
           width: 200,
           child: Image.asset(
