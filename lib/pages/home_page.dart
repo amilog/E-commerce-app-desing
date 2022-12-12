@@ -43,6 +43,7 @@ class _HomePageState extends State<HomePage> {
         child: GNav(
           selectedIndex: selectedPage,
           activeColor: lightColor.finshBoy,
+          color: Colors.black38,
           onTabChange: (index) {
             _navigateBottomBar(index);
           },

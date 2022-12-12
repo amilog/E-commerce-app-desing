@@ -162,7 +162,7 @@ class _ProductCardsState extends State<ProductCards> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: SizedBox(
-          width: 100,
+          width: 200,
           child: Image.asset(
             'assets/${shoes.photoName}',
           )),
